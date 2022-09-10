@@ -26,13 +26,6 @@ const book = () => {
   })
 }
 
-onMounted(() => {
-  http.get('/vehicles/1').then(({ data: vehicle }) => {
-    data.vehicle = vehicle
-    console.log(data)
-  })
-})
-
 const getVehicleImage = (vehicle) => {
   return `../img/${vehicle.type}.png`
 }

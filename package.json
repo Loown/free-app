@@ -8,6 +8,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^1.36.0",
     "axios": "^0.27.2",
     "date-fns": "^2.29.2",
     "pinia": "^2.0.17",

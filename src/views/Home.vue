@@ -1,8 +1,11 @@
 <script setup>
 import { reactive, onMounted } from 'vue';
 import { http } from '../http';
+import { useRouter } from 'vue-router'
 // import VehicleCard from '@/components/VehicleCard. vue'
 import VehicleCardVue from '../components/VehicleCard.vue';
+const router = useRouter()
+
 const data = reactive({
   vehicles: []
 })
@@ -16,10 +19,15 @@ const loadVehicles = () => {
 onMounted(() => {
   loadVehicles()
 })
+
+const goToVehicle = (vehicle) => {
+  router.push('/vehicle/' + vehicle.id);
+}
+
 </script>
 
 <template>
   <main>
-    <VehicleCardVue v-for="vehicle in data.vehicles" :vehicle="vehicle" class="my-3"></VehicleCardVue>
+    <VehicleCardVue v-for="vehicle in data.vehicles" :vehicle="vehicle" class="my-3" @click="goToVehicle(vehicle)"></VehicleCardVue>
   </main>
 </template>
