@@ -28,6 +28,19 @@ export const useAuthStore = defineStore({
         return error
       }
     },
+    async register({ email, password, password_confirmation }) {
+      try {
+        const { data: { token } } = await http.post('/auth/register', { email, password, password_confirmation })
+        this.$patch({
+          token,
+        });
+        localStorage.setItem('free-4-jwt', token)
+        const store = useAuthStore();
+        store.loadProfile();
+      } catch (error) {
+        return error
+      }
+    },
     async loginAsAdmin({ email, password }) {
       try {
         const { data: { token } } = await http.post('/auth/login/admin', { email, password })

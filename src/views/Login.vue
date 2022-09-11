@@ -32,6 +32,5 @@ authStore.$subscribe(({ payload }) => {
     <input type="text" placeholder="email" v-model="credentials.email">
     <input type="password" placeholder="password" v-model="credentials.password">
     <button @click="login()">Se connecter</button>
-    <button @click="goTo()">GO</button>
   </div>
 </template>

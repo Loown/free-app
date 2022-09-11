@@ -5,18 +5,21 @@ import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore()
 const router = useRouter()
-authStore.retrieveToken()
 
-// authStore.$subscribe(({ payload }) => {
-//   console.log('ici')
-//   if (payload?.isConnected) {
-//     router.push({ name: 'home' })
-//   }
-// })
+authStore.retrieveToken()
 
 const goToProfile = () => {
   router.push('/me/profile')
 }
+
+const goToLogin = () => {
+  router.push('/login')
+}
+
+const goToRegister = () => {
+  router.push('/register')
+}
+
 </script>
 
 <template>
@@ -31,19 +34,15 @@ const goToProfile = () => {
         </va-navbar-item>
       </template>
       <template #right>
-        <div v-if="authStore.getIsGuest">
-          <va-navbar-item>
-            <va-button color="black" :rounded="false">S'inscrire</va-button>
-          </va-navbar-item>
-          <va-navbar-item>
-            <va-button color="white" :rounded="false">Se connecter</va-button>
-          </va-navbar-item>
-        </div>
-        <div v-else>
-          <va-navbar-item>
-            <va-button color="grey" :rounded="false">Profil</va-button>
-          </va-navbar-item>
-        </div>
+        <va-navbar-item v-if="authStore.getIsGuest">
+          <va-button color="black" :rounded="false" @click="goToRegister()">S'inscrire</va-button>
+        </va-navbar-item>
+        <va-navbar-item v-if="authStore.getIsGuest">
+          <va-button color="white" :rounded="false" @click="goToLogin()">Se connecter</va-button>
+        </va-navbar-item>
+        <va-navbar-item v-if="authStore.getIsConnected">
+          <va-button color="grey" :rounded="false" @click="goToProfile()">Profil</va-button>
+        </va-navbar-item>
       </template>
     </va-navbar>
   </div>
