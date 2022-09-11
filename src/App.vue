@@ -20,6 +20,10 @@ const goToRegister = () => {
   router.push('/register')
 }
 
+const goToHome = () => {
+  router.push('/')
+}
+
 </script>
 
 <template>
@@ -30,7 +34,7 @@ const goToRegister = () => {
       </template>
       <template #center>
         <va-navbar-item>
-          <va-button color="grey" :rounded="false">Les offres</va-button>
+          <va-button color="grey" :rounded="false" @click="goToHome()">Les offres</va-button>
         </va-navbar-item>
       </template>
       <template #right>

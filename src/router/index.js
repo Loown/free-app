@@ -31,12 +31,6 @@ const router = createRouter({
           path: 'vehicles',
           component: () => import('../views/admin/Vehicles.vue'),
         },
-        // {
-        //   // UserPosts will be rendered inside User's <router-view>
-        //   // when /user/:id/posts is matched
-        //   path: 'posts',
-        //   component: UserPosts,
-        // },
       ],
       beforeEnter: (to, from) => {
         const authStore = useAuthStore()
@@ -65,6 +59,10 @@ const router = createRouter({
     {
       path: '/booking/:id',
       component: () => import('../views/OneBooking.vue'),
+    },
+    {
+      path: '/booking/:id/complete',
+      component: () => import('../views/BookingComplete.vue'),
     },
   ]
 })
