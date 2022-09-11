@@ -7,6 +7,76 @@ const data = reactive({
   vehicles: []
 })
 
+const typeOptions = [
+  {
+    value: 'scooter',
+    text: 'Scooter',
+  },
+  {
+    value: 'car',
+    text: 'Voiture'
+  }
+]
+
+const colorOptions = [
+{
+    value: 'white',
+    text: 'Blanc',
+  },
+  {
+    value: 'grey',
+    text: 'Gris'
+  },
+  {
+    value: 'black',
+    text: 'Noir'
+  },
+  {
+    value: 'green',
+    text: 'Vert'
+  },
+  {
+    value: 'red',
+    text: 'Rouge'
+  },
+  {
+    value: 'pink',
+    text: 'Rose'
+  },
+  {
+    value: 'purple',
+    text: 'Violet'
+  },
+  {
+    value: 'blue',
+    text: 'Bleu'
+  },
+  {
+    value: 'brown',
+    text: 'Marron'
+  },
+  {
+    value: 'orange',
+    text: 'Orange'
+  },
+  {
+    value: 'yellow',
+    text: 'Jaune'
+  },
+]
+
+const payload = reactive({
+  type: typeOptions[0],
+  brand: null,
+  model: null,
+  color: colorOptions[0],
+  serial_number: null,
+  registration_number: null,
+  kilometers: null,
+  buying_date: new Date(),
+  price: null,
+})
+
 const showModal = ref(false)
 const router = useRouter()
 
@@ -65,7 +135,7 @@ const goToVehicle = (event) => {
 }
 
 const add = () => {
-  console.log('add');
+  console.log('add', payload);
   showModal.value = false
 }
 
@@ -95,10 +165,20 @@ onMounted(() => {
     <template #content="{ ok }">
       <va-image :ratio="16/9" src="https://picsum.photos/1500" />
       <va-card-title>
-        Title!
+        Ajouter un nouveaux véhicule à la flotte!
       </va-card-title>
       <va-card-content>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis, illum rem dolorum obcaecati dolorem. Laborum, odio ipsum qui quaerat itaque reiciendis error nemo tenetur beatae. Vel obcaecati magni maxime!
+        <div>
+          <va-select label="Type" name="type" v-model="payload.type" :options="typeOptions"></va-select>
+          <va-input label="Marque" type="text" placeholder="Marque" v-model="payload.brand" class="my-2"/>
+          <va-input label="Modèle" type="text" placeholder="Modèle" v-model="payload.model" class="my-2"/>
+          <va-input label="Numéro de série" type="text" placeholder="Numéro de série" v-model="payload.serial_number" class="my-2"/>
+          <va-select label="Couleur" name="couleur" v-model="payload.color" :options="colorOptions"></va-select>
+          <va-input label="Plaque d\'immatriculation'" type="text" placeholder="Plaque d\'immatriculation" v-model="payload.registration_number" class="my-2"/>
+          <va-input label="Kilomètrage" type="number" placeholder="Kilomètres" v-model="payload.kilometers" class="my-2"/>
+          <va-date-input label="Date d'achat" placeholder="Date d\'achat" v-model="payload.buying_date" class="my-2"/>
+          <va-input label="Prix (/J)" type="number" placeholder="Prix" v-model="payload.price" class="my-2"/>
+        </div>
       </va-card-content>
       <va-card-actions>
         <va-button @click="ok" color="warning">Annuler</va-button>

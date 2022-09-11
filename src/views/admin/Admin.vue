@@ -43,9 +43,9 @@ const create = () => {
         <option value="scooter">Scooter</option>
         <option value="car">Voiture</option>
       </select>
-      <input type="text" placeholder="Marque" v-model="payload.brand">
-      <input type="text" placeholder="Modèle" v-model="payload.model">
-      <input type="text" placeholder="Numéro de série" v-model="payload.serial_number">
+      <va-input type="text" placeholder="Marque" v-model="payload.brand"/>
+      <va-input type="text" placeholder="Modèle" v-model="payload.model"/>
+      <va-input type="text" placeholder="Numéro de série" v-model="payload.serial_number"/>
       <select name="couleur" v-model="payload.color">
         <option value="">--Please choose an option--</option>
         <option value="white">Blanc</option>
@@ -60,11 +60,10 @@ const create = () => {
         <option value="orange">Orange</option>
         <option value="yellow">Jaune</option>
       </select>
-      <input type="text" placeholder="Plaque d\'immatriculation" v-model="payload.registration_number">
-      <input type="number" placeholder="Kilomètres" v-model="payload.kilometers">
-      <input type="date" placeholder="Date d\'achat" v-model="payload.buying_date">
-      <input type="number" placeholder="Prix" v-model="payload.price">
-      <button @click="create()">Créer</button>
+      <va-input type="text" placeholder="Plaque d\'immatriculation" v-model="payload.registration_number"/>
+      <va-input type="number" placeholder="Kilomètres" v-model="payload.kilometers"/>
+      <va-input type="date" placeholder="Date d\'achat" v-model="payload.buying_date"/>
+      <va-input type="number" placeholder="Prix" v-model="payload.price"/>
     </div>
   </div>
 </template>
